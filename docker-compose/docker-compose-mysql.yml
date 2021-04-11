@@ -1,0 +1,16 @@
+version: '3'
+services: 
+    db:
+        image: mysql:5.7
+        container_name: my-db
+        ports: 
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=12345678
+            - SHOW=true
+        # if you want to keep your password safe keep it in env.txt file on local host and add the block below instead of the block above
+        # env_file:
+        #     - env.txt
+        # attach volume to sync the data for next re-running (binding folders) 
+        volumes:
+            - /root/docker-compose/mysql:/var/lib/mysql   
